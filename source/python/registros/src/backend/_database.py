@@ -32,6 +32,7 @@ class RegistryDatabase(QObject):
         return True
     
     def authenticate(self, username:str, password:str) -> Any | None:
+        """ verifica as credenciais e retorna o id do usuário, caso sejam válidas """
         self.__cursor.execute(f'SELECT id FROM user WHERE cpf={self.__param} AND password={self.__param}', (username, password))
         result = self.__cursor.fetchone()
 
